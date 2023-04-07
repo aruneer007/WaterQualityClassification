@@ -1,0 +1,224 @@
+<html>
+<head>
+    <title>Fresh Water</title>
+	<style>
+		body {
+			background-color: #f7f7f7;
+            background: url('https://media.istockphoto.com/id/491962870/photo/mineral-water-is-being-poured-into-glass.jpg?s=2048x2048&w=is&k=20&c=CnevuKgbb3REhbgIlQMP2HwV6QIwWjYhd8ChQ6GDyLA=');
+		}
+		h1 {
+			text-align: center;
+			color: #0088ff;
+			margin-top: 30px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+		}
+        
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			max-width: 1000px;
+			margin: 30px auto;
+		}
+		form {
+			flex-basis: 50%;
+			max-width: 400px;
+			margin: 0 auto;
+			padding: 20px;
+			border-radius: 10px;
+			background-color: #fff;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			margin-bottom: 30px;
+		}
+		label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight: bold;
+			color: #555;
+		}
+		input[type="number"] {
+			padding: 10px;
+			border-radius: 3px;
+			border: 1px solid #ccc;
+			font-size: 16px;
+			width: 100%;
+			box-sizing: border-box;
+			margin-bottom: 20px;
+		
+		}
+		input[type="text"] {
+			padding: 10px;
+			border-radius: 3px;
+			border: 1px solid #ccc;
+			font-size: 16px;
+			width: 100%;
+			box-sizing: border-box;
+			margin-bottom: 20px;
+		
+		}
+        select {
+			display: block;
+			margin-bottom: 20px;
+			padding: 10px;
+			border: 2px solid #ccc;
+			border-radius: 5px;
+			width: 100%;
+			font-size: 16px;
+			color: #333;
+			box-sizing: border-box;
+		}
+		input[type="submit"] {
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			background-color: #007bff;
+			color: #fff;
+			font-size: 18px;
+			cursor: pointer;
+			transition: background-color 0.2s ease-in-out;
+		}
+		input[type="submit"]:hover {
+			background-color: #0056b3;
+		}
+        .output-box {
+			margin-top: 20px;
+            width: 400; 
+            height: 10;
+            margin-left: 530px;
+			padding: 20px;
+			border-radius: 5px;
+			background-color: #fff;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+		.output-box h2 {
+			margin: -5;
+			font-size: 30px;
+			color: #f13d0b;
+		}
+        
+	</style>
+</head>
+<body>
+    
+
+    <div class="login">
+        <h1>FRESH WATER CLASSIFICATION</h1>
+        
+            <form action="{{ url_for('predict_datapoint')}}" method="post">
+                    <!-- <div class="container"> -->
+                    <form>   
+                        <div class="mb-3">
+                            <label class="form-label">pH</label>
+                            <input class="form-control" type="number" min="0" max= "10" step="0.001" name="ph"
+                                placeholder=""  />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Iron</label>
+                            <input class="form-control" type="number" min="0" max= "1.5" step="0.000001" name="iron"
+                                placeholder="mg/L"  />
+                        </div>
+                        <!-- </form>
+                        <form>  -->
+                        <div class="mb-3">
+                            <label class="form-label">Nitrate</label>
+                            <input class="form-control" type="number" min="0" max= "15" step="0.0001" name="nitrate"
+                                placeholder="mg/L"  />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Chloride</label>
+                            <input class="form-control" type="number" min="0" max= "350" step="0.0001" name="chloride"
+                                placeholder="mg/L"  />
+                        </div>
+						<div class="mb-3">
+                            <label class="form-label">Lead</label>
+                            <input class="form-control" type="number" min="0" max= "10" step="0.001" name="lead"
+                                placeholder="mg/L"  />
+                        </div>
+						<div class="mb-3">
+                            <label class="form-label">Zinc</label>
+                            <input class="form-control" type="number" min="0" max= "5" step="0.000001" name="zinc"
+                                placeholder="mg/L"  />
+                        </div>
+						<div class="mb-3">
+                            <label class="form-label">Turbidity</label>
+                            <input class="form-control" type="number" min="0" max= "2" step="0.000001" name="turbidity"
+                                placeholder="mg/L"  />
+                        </div>
+						<div class="mb-3">
+                            <label class="form-label">Fluoride</label>
+                            <input class="form-control" type="number" min="0" max= "5" step="0.000001" name="fluoride"
+                                placeholder="mg/L"  />
+                        </div>
+						<div class="mb-3">
+                            <label class="form-label">Copper</label>
+                            <input class="form-control" type="number" min="0" max= "2" step="0.000001" name="copper"
+                                placeholder="mg/L"  />
+                        </div>
+						<div class="mb-3">
+                            <label class="form-label">Odor</label>
+                            <input class="form-control" type="number" min="0" max= "5" step="0.000001" name="odor"
+                                placeholder="mg/L"  />
+                        </div>
+						<div class="mb-3">
+                            <label class="form-label">Sulfate</label>
+                            <input class="form-control" type="number" min="0" max= "350" step="0.01" name="sulfate"
+                                placeholder="mg/L"  />
+                        </div>
+						<div class="mb-3">
+                            <label class="form-label">Conductivity</label>
+                            <input class="form-control" type="number" min="0" max= "1000" step="0.01" name="conductivity"
+                                placeholder="10e-06S / cm "  />
+                        </div>
+						<div class="mb-3">
+                            <label class="form-label">Chlorine</label>
+                            <input class="form-control" type="number" min="0" max= "6" step="0.01" name="chlorine"
+                                placeholder="mg/L"  />
+                        </div>
+						<div class="mb-3">
+                            <label class="form-label">Manganese</label>
+                            <input class="form-control" type="number" min="0" max= "0.5" step="0.0000001" name="manganese"
+                                placeholder="mg/L"  />
+                        </div>
+						<div class="mb-3">
+                            <label class="form-label">Total Dissolved Solids</label>
+                            <input class="form-control" type="number" min="0" max= "500" step="0.001" name="total_dissolved_solids"
+                                placeholder=""  />
+                        </div>
+						<div class="mb-3">
+                            <label for="color">Color:</label>
+                            <select id="color" name="color" placeholder="Choose the color">
+                                <option value="Colorless">Colourless</option>
+                                <option value="Faint Yellow">Faint Yellow</option>
+                                <option value="Light Yellow Color">Light Yellow Color</option>
+                                <option value="Near Colorless">Near Colorless</option>
+                                <option value="Yellow">Yellow</option>
+                            </select>
+                        </div>
+                        
+						<div class="mb-3">
+                            <label for="Source">Color:</label>
+                            <select id="source" name="source" placeholder="Source">
+                                <option value="Reservoir">Reservoir</option>
+                                <option value="Spring">Spring</option>
+                                <option value="River">River</option>
+                                <option value="Lake">Lake</option>
+                                <option value="Stream">Stream</option>
+                                <option value="Ground">Ground</option>
+                                <option value="Aquifer">Aquifer</option>
+                                <option value="Well">Well</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <input class="btn btn-primary" type="submit" value="SUBMIT" required />
+                        </div>
+                    </form>
+                <!-- </div> -->
+                <div class="output-box">
+                    <h2 id="output-text">{{results}}</h2>
+                </div>
+                
+            </form>
+        
+    </div>
+<body>
+</html>
